@@ -23,6 +23,7 @@ export class Game {
 
     //初始化游戏状态
     this.firstLoading = true;
+    this.isFirstJump = true;
     this.isLoadAnmation = false;
     this.start = false;
     this.gameover = false;
@@ -46,11 +47,13 @@ export class Game {
 
     if (this.firstLoading) {
       this.#drawFirstLoadDinosaur();
+
       return;
     }
     if (this.isLoadAnmation) {
       this.#drawFirstLoadAnimation();
-      return; 
+      this.#drawDinosaur();
+      return;
     }
 
     //绘制地面
@@ -62,8 +65,8 @@ export class Game {
   #drawFirstLoadDinosaur() {
     this.ctx.drawImage(
       this.sprites.spriteImg,
-      this.dinosaur.dinosaurBegin.dx,
-      this.dinosaur.dinosaurBegin.dy,
+      this.dinosaur.dinosaurBegin.x,
+      this.dinosaur.dinosaurBegin.y,
       this.dinosaur.dinosaurBegin.width,
       this.dinosaur.dinosaurBegin.height,
       this.dinosaur.dinosaurPosition.dx,
@@ -85,10 +88,29 @@ export class Game {
       item.dWidth,
       item.dHeight
     );
-  
+
     if (this.ground.firstLoadAnimation()) {
       this.isLoadAnmation = false;
-      this.ground.reset()
+      this.ground.reset();
+    }
+  }
+
+  #drawDinosaur() {
+    this.ctx.drawImage(
+      this.sprites.spriteImg,
+      this.dinosaur.currentDinosaur.x,
+      this.dinosaur.currentDinosaur.y,
+      this.dinosaur.currentDinosaur.width,
+      this.dinosaur.currentDinosaur.height,
+      this.dinosaur.dinosaurPosition.dx,
+      this.dinosaur.dinosaurPosition.dy,
+      this.dinosaur.currentDinosaur.width,
+      this.dinosaur.currentDinosaur.height
+    );
+    this.dinosaur.update();
+    if (this.isFirstJump) {
+      this.dinosaur.jump();
+      this.isFirstJump = false;
     }
   }
 
@@ -109,18 +131,18 @@ export class Game {
     this.ground.update();
   }
 
-  #drawDinosaur() {}
-
   #initEvent() {
     document.addEventListener("keydown", (e) => {
-      // console.log(e);
       if (e.code === "Space") {
         console.log("jump");
         //绘制开场动画
         if (this.firstLoading) {
           this.isLoadAnmation = true;
           this.firstLoading = false;
+          return;
         }
+
+        this.dinosaur.jump(e.timeStamp);
       }
     });
   }

@@ -11,10 +11,402 @@
 
 <body>
   <div class="main">
+
     <canvas id="gameBox" width="600" height="150"></canvas>
   </div>
 
+  <div class="main" style="margin-top: 50px;">
+    <canvas id="spriteBox" width="1234" height="600"></canvas>
+  </div>
+
   <script src="./app.js" type="module"></script>
+  <script>
+
+    const canvasBox = document.getElementById("spriteBox")
+    const ctx = canvasBox.getContext("2d")
+
+    const img = new Image()
+
+    const dinosaur = {
+      dx: 37,
+      dy: 5,
+      width: 48,
+      height: 48
+    }
+
+    const cloud = {
+      dx: 85,
+      dy: 2,
+      width: 48,
+      height: 15
+    }
+
+    const birdUp = {
+      dx: 133,
+      dy: 10,
+      width: 48,
+      height: 30
+    }
+    const birdDown = {
+      dx: 181,
+      dy: 5,
+      width: 48,
+      height: 30
+    }
+
+    const smallCactus = {
+      dx: 229,
+      dy: 3,
+      width: 15,
+      height: 40
+    }
+
+    const smallCactusGroupTwo = {
+      dx: 245,
+      dy: 3,
+      width: 34,
+      height: 40
+    }
+
+    const smallCactusGroupThree = {
+      dx: 280,
+      dy: 3,
+      width: 50,
+      height: 40
+    }
+
+    const bigCactus = {
+      dx: 330,
+      dy: 3,
+      width: 26,
+      height: 48
+    }
+
+    const bigCactusGroupTwo = {
+      dx: 357,
+      dy: 3,
+      width: 50,
+      height: 48
+    }
+
+    const bigCactusGroupThree = {
+      dx: 408,
+      dy: 3,
+      width: 75,
+      height: 48
+    }
+
+    const leftOneFourthMoon = {
+      dx: 484,
+      dy: 2,
+      width: 18,
+      height: 40
+    }
+
+    const leftOneThreeMoon = {
+      dx: 505,
+      dy: 2,
+      width: 18,
+      height: 40
+    }
+
+    const leftHalfMoon = {
+      dx: 526,
+      dy: 2,
+      width: 18,
+      height: 40
+    }
+
+    const fullMoon = {
+      dx: 544,
+      dy: 2,
+      width: 40,
+      height: 40
+    }
+
+    const rightHalfMoon = {
+      dx: 584,
+      dy: 2,
+      width: 18,
+      height: 40
+    }
+
+    const rightOneThirdMoon = {
+      dx: 605,
+      dy: 2,
+      width: 18,
+      height: 40
+    }
+
+    const rightOneFourthMoon = {
+      dx: 626,
+      dy: 2,
+      width: 18,
+      height: 40
+    }
+
+    const number_zero = {
+      dx: 652,
+      dy: 2,
+      width: 12,
+      height: 12
+    }
+
+    const number_one = {
+      dx: 664,
+      dy: 2,
+      width: 11,
+      height: 12
+    }
+
+    const number_two = {
+      dx: 674,
+      dy: 2,
+      width: 11,
+      height: 12
+    }
+
+    const number_three = {
+      dx: 684,
+      dy: 2,
+      width: 11,
+      height: 12
+    }
+    const number_four = {
+      dx: 694,
+      dy: 2,
+      width: 11,
+      height: 12
+    }
+
+    const number_five = {
+      dx: 704,
+      dy: 2,
+      width: 11,
+      height: 12
+    }
+
+    const number_six = {
+      dx: 714,
+      dy: 2,
+      width: 11,
+      height: 12
+    }
+
+    const number_seven = {
+      dx: 724,
+      dy: 2,
+      width: 11,
+      height: 12
+    }
+
+
+    const number_eight = {
+      dx: 734,
+      dy: 2,
+      width: 11,
+      height: 12
+    }
+
+    const number_nine = {
+      dx: 744,
+      dy: 2,
+      width: 11,
+      height: 12
+    }
+
+    const hi = {
+      dx: 754,
+      dy: 2,
+      width: 22,
+      height: 12
+    }
+    const gameover = {
+      dx: 653,
+      dy: 15,
+      width: 195,
+      height: 18
+    }
+    const dinoStatusOne = {
+      dx: 849,
+      dy: 5,
+      width: 42,
+      height: 48
+    }
+    //还剩7个状态
+    const dinoStatusTwo = {
+      dx: 892,
+      dy: 5,
+      width: 42,
+      height: 48
+    }
+
+    const dinoStatusThree = {
+      dx: 934,
+      dy: 5,
+      width: 45,
+      height: 48
+    }
+
+    const dinoStatusFour = {
+      dx: 978,
+      dy: 5,
+      width: 45,
+      height: 48
+    }
+
+    const dinoStatusFive = {
+      dx: 1025,
+      dy: 5,
+      width: 42,
+      height: 48
+    }
+
+    const dinoStatusSix = {
+      dx: 1070,
+      dy: 5,
+      width: 42,
+      height: 48
+    }
+
+    const dinoStatusSeven = {
+      dx: 1113,
+      dy: 20,
+      width: 58,
+      height: 32
+    }
+
+    const dinoStatusEight = {
+      dx: 1170,
+      dy: 20,
+      width: 58,
+      height: 32
+    }
+
+    const ground = {
+      dx: 0,
+      dy: 54,
+      width: 1233,
+      height: 12
+    }
+
+    const chromeLogoOne = {
+      dx: 5,
+      dy: 68,
+      width: 30,
+      height: 30
+    }
+    const chromeLogoTwo = {
+      dx: 38,
+      dy: 68,
+      width: 30,
+      height: 30
+    }
+
+    const restartLogoOne = {
+      dx: 71,
+      dy: 68,
+      width: 35,
+      height: 35
+    }
+    const restartLogoTwo = {
+      dx: 108,
+      dy: 68,
+      width: 38,
+      height: 35
+    }
+    const restartLogoThree = {
+      dx: 148,
+      dy: 68,
+      width: 35,
+      height: 35
+    }
+    const restartLogoFour = {
+      dx: 181,
+      dy: 68,
+      width: 38,
+      height: 35
+    }
+    const restartLogoFive = {
+      dx: 217,
+      dy: 68,
+      width: 38,
+      height: 35
+    }
+    const restartLogoSix = {
+      dx: 253,
+      dy: 68,
+      width: 38,
+      height: 35
+    }
+
+
+
+
+    img.src = "./assets/sprite-100.png"
+
+    img.onload = () => {
+      ctx.drawImage(img, dinosaur.dx, dinosaur.dy, dinosaur.width, dinosaur.height, 0, 0, dinosaur.width, dinosaur.height)
+      ctx.drawImage(img, cloud.dx, cloud.dy, cloud.width, cloud.height, 60, 0, cloud.width, cloud.height)
+      ctx.drawImage(img, birdUp.dx, birdUp.dy, birdUp.width, birdUp.height, 120, 0, birdUp.width, birdUp.height)
+      ctx.drawImage(img, birdDown.dx, birdDown.dy, birdDown.width, birdDown.height, 180, 0, birdDown.width, birdDown.height)
+      ctx.drawImage(img, smallCactus.dx, smallCactus.dy, smallCactus.width, smallCactus.height, 240, 0, smallCactus.width, smallCactus.height)
+      ctx.drawImage(img, smallCactusGroupTwo.dx, smallCactusGroupTwo.dy, smallCactusGroupTwo.width, smallCactusGroupTwo.height, 270, 0, smallCactusGroupTwo.width, smallCactusGroupTwo.height)
+      ctx.drawImage(img, smallCactusGroupThree.dx, smallCactusGroupThree.dy, smallCactusGroupThree.width, smallCactusGroupThree.height, 320, 0, smallCactusGroupThree.width, smallCactusGroupThree.height)
+
+      ctx.drawImage(img, bigCactus.dx, bigCactus.dy, bigCactus.width, bigCactus.height, 0, 60, bigCactus.width, bigCactus.height)
+      ctx.drawImage(img, bigCactusGroupTwo.dx, bigCactusGroupTwo.dy, bigCactusGroupTwo.width, bigCactusGroupTwo.height, 40, 60, bigCactusGroupTwo.width, bigCactusGroupTwo.height)
+
+      ctx.drawImage(img, bigCactusGroupThree.dx, bigCactusGroupThree.dy, bigCactusGroupThree.width, bigCactusGroupThree.height, 100, 60, bigCactusGroupThree.width, bigCactusGroupThree.height)
+
+      //绘制月亮
+      ctx.drawImage(img, leftOneFourthMoon.dx, leftOneFourthMoon.dy, leftOneFourthMoon.width, leftOneFourthMoon.height, 0, 120, leftOneFourthMoon.width, leftOneFourthMoon.height)
+      ctx.drawImage(img, leftOneThreeMoon.dx, leftOneThreeMoon.dy, leftOneThreeMoon.width, leftOneThreeMoon.height, 20, 120, leftOneThreeMoon.width, leftOneThreeMoon.height)
+      ctx.drawImage(img, leftHalfMoon.dx, leftHalfMoon.dy, leftHalfMoon.width, leftHalfMoon.height, 40, 120, leftHalfMoon.width, leftHalfMoon.height)
+      ctx.drawImage(img, fullMoon.dx, fullMoon.dy, fullMoon.width, fullMoon.height, 60, 120, fullMoon.width, fullMoon.height)
+      ctx.drawImage(img, rightHalfMoon.dx, rightHalfMoon.dy, rightHalfMoon.width, rightHalfMoon.height, 100, 120, rightHalfMoon.width, rightHalfMoon.height)
+      ctx.drawImage(img, rightOneThirdMoon.dx, rightOneThirdMoon.dy, rightOneThirdMoon.width, rightOneThirdMoon.height, 120, 120, rightOneThirdMoon.width, rightOneThirdMoon.height)
+      ctx.drawImage(img, rightOneFourthMoon.dx, rightOneFourthMoon.dy, rightOneFourthMoon.width, rightOneFourthMoon.height, 140, 120, rightOneFourthMoon.width, rightOneFourthMoon.height)
+
+      //绘制数字
+      ctx.drawImage(img, number_zero.dx, number_zero.dy, number_zero.width, number_zero.height, 0, 170, number_zero.width, number_zero.height)
+      ctx.drawImage(img, number_one.dx, number_one.dy, number_one.width, number_one.height, 20, 170, number_one.width, number_one.height)
+      ctx.drawImage(img, number_two.dx, number_two.dy, number_two.width, number_two.height, 40, 170, number_two.width, number_two.height)
+      ctx.drawImage(img, number_three.dx, number_three.dy, number_three.width, number_three.height, 60, 170, number_three.width, number_three.height)
+      ctx.drawImage(img, number_four.dx, number_four.dy, number_four.width, number_four.height, 80, 170, number_four.width, number_four.height)
+      ctx.drawImage(img, number_five.dx, number_five.dy, number_five.width, number_five.height, 100, 170, number_five.width, number_five.height)
+      ctx.drawImage(img, number_six.dx, number_six.dy, number_six.width, number_six.height, 120, 170, number_six.width, number_six.height)
+      ctx.drawImage(img, number_seven.dx, number_seven.dy, number_seven.width, number_seven.height, 140, 170, number_seven.width, number_seven.height)
+      ctx.drawImage(img, number_eight.dx, number_eight.dy, number_eight.width, number_eight.height, 160, 170, number_eight.width, number_eight.height)
+      ctx.drawImage(img, number_nine.dx, number_nine.dy, number_nine.width, number_nine.height, 180, 170, number_nine.width, number_nine.height)
+      //绘制文字
+      ctx.drawImage(img, hi.dx, hi.dy, hi.width, hi.height, 200, 170, hi.width, hi.height)
+      ctx.drawImage(img, gameover.dx, gameover.dy, gameover.width, gameover.height, 240, 170, gameover.width, gameover.height)
+      //绘制地面
+      ctx.drawImage(img, ground.dx, ground.dy, ground.width, ground.height, 0, 200, ground.width, ground.height)
+
+      //绘制恐龙状态
+      ctx.drawImage(img, dinoStatusOne.dx, dinoStatusOne.dy, dinoStatusOne.width, dinoStatusOne.height, 0, 220, dinoStatusOne.width, dinoStatusOne.height)
+      ctx.drawImage(img, dinoStatusTwo.dx, dinoStatusTwo.dy, dinoStatusTwo.width, dinoStatusTwo.height, 45, 220, dinoStatusTwo.width, dinoStatusTwo.height)
+      ctx.drawImage(img, dinoStatusThree.dx, dinoStatusThree.dy, dinoStatusThree.width, dinoStatusThree.height, 90, 220, dinoStatusThree.width, dinoStatusThree.height)
+      ctx.drawImage(img, dinoStatusFour.dx, dinoStatusFour.dy, dinoStatusFour.width, dinoStatusFour.height, 135, 220, dinoStatusFour.width, dinoStatusFour.height)
+      ctx.drawImage(img, dinoStatusFive.dx, dinoStatusFive.dy, dinoStatusFive.width, dinoStatusFive.height, 180, 220, dinoStatusFive.width, dinoStatusFive.height)
+      ctx.drawImage(img, dinoStatusSix.dx, dinoStatusSix.dy, dinoStatusSix.width, dinoStatusSix.height, 225, 220, dinoStatusSix.width, dinoStatusSix.height)
+      ctx.drawImage(img, dinoStatusSeven.dx, dinoStatusSeven.dy, dinoStatusSeven.width, dinoStatusSeven.height, 275, 220, dinoStatusSeven.width, dinoStatusSeven.height)
+      ctx.drawImage(img, dinoStatusEight.dx, dinoStatusEight.dy, dinoStatusEight.width, dinoStatusEight.height, 340, 220, dinoStatusEight.width, dinoStatusEight.height)
+
+      //绘制ui
+      ctx.drawImage(img, chromeLogoOne.dx, chromeLogoOne.dy, chromeLogoOne.width, chromeLogoOne.height, 0, 280, chromeLogoOne.width, chromeLogoOne.height)
+      ctx.drawImage(img, chromeLogoTwo.dx, chromeLogoTwo.dy, chromeLogoTwo.width, chromeLogoTwo.height, 40, 280, chromeLogoTwo.width, chromeLogoTwo.height)
+      ctx.drawImage(img, restartLogoOne.dx, restartLogoOne.dy, restartLogoOne.width, restartLogoOne.height, 90, 280, restartLogoOne.width, restartLogoOne.height)
+      ctx.drawImage(img, restartLogoTwo.dx, restartLogoTwo.dy, restartLogoTwo.width, restartLogoTwo.height, 130, 280, restartLogoTwo.width, restartLogoTwo.height)
+      ctx.drawImage(img, restartLogoThree.dx, restartLogoThree.dy, restartLogoThree.width, restartLogoThree.height, 180, 280, restartLogoThree.width, restartLogoThree.height)
+      ctx.drawImage(img, restartLogoFour.dx, restartLogoFour.dy, restartLogoFour.width, restartLogoFour.height, 220, 280, restartLogoFour.width, restartLogoFour.height)
+      ctx.drawImage(img, restartLogoFive.dx, restartLogoFive.dy, restartLogoFive.width, restartLogoFive.height, 260, 280, restartLogoFive.width, restartLogoFive.height)
+      ctx.drawImage(img, restartLogoSix.dx, restartLogoSix.dy, restartLogoSix.width, restartLogoSix.height, 300, 280, restartLogoSix.width, restartLogoSix.height)
+
+    }
+  </script>
 </body>
 
 </html>
