@@ -1,7 +1,7 @@
 const SPRITE_PATH = "../assets/sprite-100.png";
-const GAMEOVER_MAP3_PATH = "../assets/sprite-100.png";
-const LEVEL_UP_MAP3_PATH = "../assets/sprite-100.png";
-const JUMP_MAP3_PATH = "../assets/sprite-100.png";
+const GAMEOVER_MAP3_PATH = "../assets/game-over.mp3";
+const LEVEL_UP_MAP3_PATH = "../assets/level-up.mp3";
+const JUMP_MAP3_PATH = "../assets/jump.mp3";
 
 export class ResourceLoader {
   constructor() {}

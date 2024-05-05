@@ -11,12 +11,14 @@
 
 <body>
   <div class="main">
-
+    <canvas id="backgroundBox" width="600" height="150"></canvas>
     <canvas id="gameBox" width="600" height="150"></canvas>
   </div>
-  <h3>精灵图demo,方便定位状态</h3>
+
+  <h3 style="margin-top: 200px;">精灵图demo,方便定位元素位置</h3>
   <div class="main" style="margin-top: 50px;">
-    <canvas id="spriteBox" width="1234" height="600"></canvas>
+    
+    <canvas id="spriteBox" width="1234" height="500"></canvas>
   </div>
 
   <script src="./app.js" type="module"></script>
@@ -350,14 +352,15 @@
       ctx.drawImage(img, cloud.dx, cloud.dy, cloud.width, cloud.height, 60, 0, cloud.width, cloud.height)
       ctx.drawImage(img, birdUp.dx, birdUp.dy, birdUp.width, birdUp.height, 120, 0, birdUp.width, birdUp.height)
       ctx.drawImage(img, birdDown.dx, birdDown.dy, birdDown.width, birdDown.height, 180, 0, birdDown.width, birdDown.height)
-      ctx.drawImage(img, smallCactus.dx, smallCactus.dy, smallCactus.width, smallCactus.height, 240, 0, smallCactus.width, smallCactus.height)
-      ctx.drawImage(img, smallCactusGroupTwo.dx, smallCactusGroupTwo.dy, smallCactusGroupTwo.width, smallCactusGroupTwo.height, 270, 0, smallCactusGroupTwo.width, smallCactusGroupTwo.height)
-      ctx.drawImage(img, smallCactusGroupThree.dx, smallCactusGroupThree.dy, smallCactusGroupThree.width, smallCactusGroupThree.height, 320, 0, smallCactusGroupThree.width, smallCactusGroupThree.height)
 
-      ctx.drawImage(img, bigCactus.dx, bigCactus.dy, bigCactus.width, bigCactus.height, 0, 60, bigCactus.width, bigCactus.height)
-      ctx.drawImage(img, bigCactusGroupTwo.dx, bigCactusGroupTwo.dy, bigCactusGroupTwo.width, bigCactusGroupTwo.height, 40, 60, bigCactusGroupTwo.width, bigCactusGroupTwo.height)
+      ctx.drawImage(img, smallCactus.dx, smallCactus.dy, smallCactus.width, smallCactus.height, 240, 80, smallCactus.width, smallCactus.height)
+      ctx.drawImage(img, smallCactusGroupTwo.dx, smallCactusGroupTwo.dy, smallCactusGroupTwo.width, smallCactusGroupTwo.height, 270, 80, smallCactusGroupTwo.width, smallCactusGroupTwo.height)
+      ctx.drawImage(img, smallCactusGroupThree.dx, smallCactusGroupThree.dy, smallCactusGroupThree.width, smallCactusGroupThree.height, 320, 80, smallCactusGroupThree.width, smallCactusGroupThree.height)
 
-      ctx.drawImage(img, bigCactusGroupThree.dx, bigCactusGroupThree.dy, bigCactusGroupThree.width, bigCactusGroupThree.height, 100, 60, bigCactusGroupThree.width, bigCactusGroupThree.height)
+      ctx.drawImage(img, bigCactus.dx, bigCactus.dy, bigCactus.width, bigCactus.height, 370, 80, bigCactus.width, bigCactus.height)
+      ctx.drawImage(img, bigCactusGroupTwo.dx, bigCactusGroupTwo.dy, bigCactusGroupTwo.width, bigCactusGroupTwo.height, 410, 80, bigCactusGroupTwo.width, bigCactusGroupTwo.height)
+
+      ctx.drawImage(img, bigCactusGroupThree.dx, bigCactusGroupThree.dy, bigCactusGroupThree.width, bigCactusGroupThree.height, 500, 80, bigCactusGroupThree.width, bigCactusGroupThree.height)
 
       //绘制月亮
       ctx.drawImage(img, leftOneFourthMoon.dx, leftOneFourthMoon.dy, leftOneFourthMoon.width, leftOneFourthMoon.height, 0, 120, leftOneFourthMoon.width, leftOneFourthMoon.height)
@@ -405,6 +408,9 @@
       ctx.drawImage(img, restartLogoFive.dx, restartLogoFive.dy, restartLogoFive.width, restartLogoFive.height, 260, 280, restartLogoFive.width, restartLogoFive.height)
       ctx.drawImage(img, restartLogoSix.dx, restartLogoSix.dy, restartLogoSix.width, restartLogoSix.height, 300, 280, restartLogoSix.width, restartLogoSix.height)
 
+
+
+      ctx.drawImage(img, bigCactus.dx, bigCactus.dy, bigCactus.width, bigCactus.height, 370, 400, bigCactus.width, bigCactus.height)
     }
   </script>
 </body>

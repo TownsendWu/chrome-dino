@@ -1,7 +1,7 @@
 
 
 
-export class Cactus {
+export class Obstacle {
   constructor(cactusSprites, canvasWidth, canvasHeight, initSpeed = 5) {
     this.cactusGroups = cactusSprites.cactusGroups;
 

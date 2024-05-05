@@ -1,88 +1,85 @@
 export class Ground {
-  constructor(canvasWidth, canvasHeight) {
+  constructor(groundSprites, canvasWidth, canvasHeight, initSpeed = 5) {
+    this.groundOne = groundSprites.ground1;
+    this.groundTwo = groundSprites.ground2;
+    this.clouds = groundSprites.clouds;
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
+    this.speed = initSpeed;
+    this.cloudSpeed = 1;
 
-    //地面在精灵图中的位置
-    this.x = 0;
-    this.y = 54;
-    this.width = 1233;
-    this.height = 12;
-
-    //地面的初始滚动速度
-    this.speed = 5;
 
     //两个地面的位置，用于无缝滚动
     this.groundPositions = [
       {
-        sx: 0,
-        sy: 54,
-        sWidth: 0,
-        sHeight: 12,
         dx: 0,
-        dy: canvasHeight - this.height - 8,
-        dWidth: 0,
-        dHeight: 12,
+        dy: canvasHeight - 20,
       },
       {
-        sx: 600,
-        sy: 54,
-        sWidth: 633,
-        sHeight: 12,
-        dx: 600,
-        dy: canvasHeight - this.height - 8,
-        dWidth: 633,
-        dHeight: 12,
+        dx: 1119,
+        dy: canvasHeight - 20,
       },
     ];
-  }
-  firstLoadAnimation() {
-    const item = this.groundPositions[0];
-    item.dWidth += this.speed;
-    item.sWidth += this.speed;
 
-    return item.sWidth >= this.canvasWidth
+    this.cloudPositions = [
+      {
+        dx: 0,
+        dy: 30,
+      },
+      {
+        dx: 300,
+        dy: 20,
+      },
+      {
+        dx: 450,
+        dy: 40,
+      }
+    ]
+  }
+  /**
+   * @param {CanvasRenderingContext2D} ctx 
+   */
+  draw(ctx) {
+    ctx.drawImage(this.groundOne, 0, 0, 1119, 12, this.groundPositions[0].dx, this.groundPositions[0].dy, 1119, 12);
+    ctx.drawImage(this.groundTwo, 0, 0, 1119, 12, this.groundPositions[1].dx, this.groundPositions[1].dy, 1119, 12);
+
+    this.cloudPositions.forEach((cloud,index) => {
+      ctx.drawImage(this.clouds[index], 0, 0, 48, 15, cloud.dx, cloud.dy, 48, 15);
+    });
+
   }
 
   update() {
     this.groundPositions[0].dx -= this.speed;
+
     this.groundPositions[1].dx -= this.speed;
 
-    if (this.groundPositions[0].dx <= -600) {
-      this.groundPositions[0].dx = 600;
+    if (this.groundPositions[0].dx <= -1119) {
+      this.groundPositions[0].dx = 1119;
     }
 
-    if (this.groundPositions[1].dx <= -600) {
-      this.groundPositions[1].dx = 600;
+    if (this.groundPositions[1].dx <= -1119) {
+      this.groundPositions[1].dx = 1119;
     }
+
+    this.cloudPositions.forEach(cloud => {
+      cloud.dx -= this.cloudSpeed;
+      if (cloud.dx <= -48) {
+        cloud.dx = 1119;
+      }
+    });
+  }
+
+  gameOver() {
+    this.speed = 0;
+    this.cloudSpeed = 0;
+  }
+  restart() {
+    this.speed = 5;
+    this.cloudSpeed = 1;
   }
 
   updateSpeed(speed) {
     this.speed = speed;
-  }
-
-  reset() {
-    this.groundPositions = [
-      {
-        sx: 0,
-        sy: 54,
-        sWidth: 600,
-        sHeight: 12,
-        dx: 0,
-        dy: this.canvasHeight - this.height - 8,
-        dWidth: 600,
-        dHeight: 12,
-      },
-      {
-        sx: 600,
-        sy: 54,
-        sWidth: 633,
-        sHeight: 12,
-        dx: 600,
-        dy: this.canvasHeight - this.height - 8,
-        dWidth: 633,
-        dHeight: 12,
-      },
-    ];
   }
 }

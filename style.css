@@ -2,6 +2,7 @@ html,body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-y: hidden;
 }
 
 h3 {
@@ -32,9 +33,25 @@ h4 {
     justify-content: center;
     align-items: center;
     margin-top: 100px;
+    background-color: #F7F7F7;   
 }
 
 .main canvas {
     outline: none;
+    /* border: 1px solid #000; */
+}
+
+.main #backgroundBox {
+    position: fixed;
+    top: 100px;
+    /* border: 1px solid #000; */
+    z-index: 1;
+}
+
+.main #gameBox {
+    position: fixed;
+    top: 100px;
+    /* border: 1px solid #000; */
+    z-index: 2 ;
 }
 

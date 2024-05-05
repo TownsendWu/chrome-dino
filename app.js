@@ -1,6 +1,6 @@
 import { Game } from "./game.js";
 import { ResourceLoader } from "./js/resource-loader.js";
-import { Sound, Sprites } from "./js/resources.js";
+import { Sound, Score, Dinosaurs, GameOver, Cactus, BackGround, Bird } from "./js/resources.js";
 
 export class App {
   constructor() {
@@ -13,14 +13,32 @@ export class App {
   async start() {
     //先加载资源
     const resourceLoader = new ResourceLoader();
-    const sprite = await resourceLoader.initSprites();
+    const spriteImg = await resourceLoader.initSprites();
     const { gameoverMp3, levelUpMp3, jumpMp3 } =
       await resourceLoader.initSound();
 
     const sound = new Sound(gameoverMp3, jumpMp3, levelUpMp3);
-    const sprites = new Sprites(sprite);
+    //离屏canvas
 
+    const dinosaurs = new Dinosaurs(spriteImg);
+    const score = new Score(spriteImg);
+    const gameover = new GameOver(spriteImg);
+    const cactus = new Cactus(spriteImg);
+    const ground = new BackGround(spriteImg);
+    const bird = new Bird(spriteImg);
+
+    const sprites = {
+      dinosaurs,
+      score,
+      gameover,
+      cactus,
+      ground,
+      bird,
+    };
+
+    //创建游戏实例
     this.game = new Game(sprites, sound);
+
     //启动游戏循环
     this.loop();
   }
